@@ -1,0 +1,33 @@
+name: standard
+on:
+  workflow_dispatch:
+
+jobs:
+
+  angular:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Cypress tests
+        uses: cypress-io/github-action@v5
+        with:
+          working-directory: packages/angular
+          start: npm start
+          wait-on: 'http://localhost:4200'
+      - name: curl
+        run: scripts/curl.sh 4200
+
+  vite:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Cypress tests
+        uses: cypress-io/github-action@v5
+        with:
+          working-directory: packages/vite
+          start: npm start
+          wait-on: 'http://localhost:5173'
+      - name: curl
+        run: scripts/curl.sh 5173
