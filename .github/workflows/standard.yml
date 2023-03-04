@@ -16,6 +16,7 @@ jobs:
           start: npm start
           wait-on: 'http://localhost:4200'
       - name: curl
+        if: always()
         run: scripts/curl.sh 4200
 
   vite:
@@ -30,4 +31,5 @@ jobs:
           start: npm start
           wait-on: 'http://localhost:5173'
       - name: curl
+        if: always()
         run: scripts/curl.sh 5173
