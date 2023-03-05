@@ -1,0 +1,17 @@
+name: Gatsby
+on: workflow_dispatch
+jobs:
+  gatsby:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Cypress tests
+        uses: cypress-io/github-action@v5
+        with:
+          working-directory: packages/gatsby
+          start: npm start
+          wait-on: 'http://localhost:8000'
+      - name: curl
+        if: always()
+        run: scripts/curl.sh 8000
