@@ -37,8 +37,15 @@ Build at: 2023-03-04T17:49:47.255Z - Hash: 8be49ab8ed4252b5 - Time: 10536ms
 ✔ Compiled successfully.
 http://localhost:4200 timed out on retry 91 of 3, elapsed 90221ms, limit 90000ms
 Error: connect ECONNREFUSED 127.0.0.1:4200
-
 ```
+
+Angular is not listening on the IPv4 loopback address `127.0.0.1`.
+
+## Workaround
+
+Change `wait-on` to
+`wait-on: http://[::1]:4200`
+to listen on IPv6 loopback address `::1`.
 
 ## Vite
 
@@ -65,6 +72,8 @@ waiting on "http://localhost:5173" with timeout of 60 seconds
 http://localhost:5173 timed out on retry 91 of 3, elapsed 90231ms, limit 90000ms
 Error: connect ECONNREFUSED 127.0.0.1:5173
 ```
+
+Vite is not listening on the IPv4 loopback address `127.0.0.1`.
 
 ### Workaround
 
