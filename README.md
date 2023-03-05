@@ -1,18 +1,24 @@
-This repository is a monorepo used for testing the built-in `wait-on` function of https://github.com/cypress-io/github-action.
+# Cypress GitHub Action `wait-on`
 
-- [Angular](#angular)
-  - [Error condition](#error-condition)
-  - [Workaround](#workaround)
-- [Create React App](#create-react-app)
-  - [Start logs](#start-logs)
-- [Gatsby](#gatsby)
-  - [Error condition](#error-condition-1)
-  - [Workaround](#workaround-1)
-- [Next.js](#nextjs)
-  - [Start logs](#start-logs-1)
-- [Vite](#vite)
-  - [Error condition](#error-condition-2)
-  - [Workaround](#workaround-2)
+Tests and workarounds for `wait-on` of [cypress-io/github-action](https://github.com/cypress-io/github-action).
+
+This repository is a monorepo used for testing the built-in `wait-on` function of https://github.com/cypress-io/github-action against different packages using the default Node.js version on GitHub (currently 18.x). If the `wait-on` parameter is used to wait for a running development server on `localhost` it may fail to discover the server if the server is not listening on both the IPv4 loopback address `127.0.0.1` and the IPv6 loopback address `::1`.
+
+- [workflows](.github/workflows) contain individual tests, with logs in [actions](https://github.com/MikeMcC399/gh-action-wait-on/actions).
+- [packages](packages) are each located in their own working-directory.
+- [docs](docs) contain setup details used to install the packages.
+
+The table below shows individual workarounds for the generic `wait-on` issue, tested on GitHub `ubuntu-22.04`.
+
+## Summary
+
+| Package                               | Workaround                                          |
+| ------------------------------------- | --------------------------------------------------- |
+| [Angular](#angular)                   | [`wait-on: http://[::1]:4200`](#angular-workaround) |
+| [Create React App](#create-react-app) | none needed                                         |
+| [Gatsby](#gatsby)                     | [`wait-on: http://[::1]:8000`](#gatsby-workaround)  |
+| [Next.js](#nextjs)                    | none needed                                         |
+| [Vite](#vite)                         | [`start: npx vite --host`](#vite-workaround)        |
 
 ## Angular
 
@@ -55,7 +61,7 @@ Error: connect ECONNREFUSED 127.0.0.1:4200
 
 Angular is not listening on the IPv4 loopback address `127.0.0.1`.
 
-### Workaround
+### Angular Workaround
 
 Change `wait-on` to
 `wait-on: http://[::1]:4200`
@@ -159,7 +165,7 @@ Error: connect ECONNREFUSED 127.0.0.1:8000
 
 Gatsby is not listening on the IPv4 loopback address `127.0.0.1`.
 
-### Workaround
+### Gatsby Workaround
 
 Change `wait-on` to
 `wait-on: http://[::1]:8000`
@@ -225,7 +231,7 @@ Error: connect ECONNREFUSED 127.0.0.1:5173
 
 Vite is not listening on the IPv4 loopback address `127.0.0.1`.
 
-### Workaround
+### Vite Workaround
 
 Replace `npm start` with `npx vite --host`
 
