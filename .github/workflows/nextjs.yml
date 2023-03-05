@@ -1,0 +1,17 @@
+name: Next.js
+on: workflow_dispatch
+jobs:
+  nextjs:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Cypress tests
+        uses: cypress-io/github-action@v5
+        with:
+          working-directory: packages/nextjs
+          start: npm run dev
+          wait-on: 'http://localhost:3000'
+      - name: curl
+        if: always()
+        run: scripts/curl.sh 3000
