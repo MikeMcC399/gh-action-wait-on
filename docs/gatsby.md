@@ -21,17 +21,15 @@ Accept defaults. No additional features.
 rm -rf gatsby/.git
 ```
 
+Add file `gatsby/.npmrc` with contents `legacy-peer-deps=true`.
+
 ### Set up Cypress
 
 ```bash
 cd gatsby
-npm install cypress@latest -D --legacy-peer-deps
+npm install cypress@latest -D
 npx cypress open
 ```
-
-Note:
-Use `--legacy-peer-deps` above to avoid npm warning caused by Gatsby.
-
 
 Select E2E Testing > Continue > Chrome > Start E2E Testing in Chrome
 Create new spec > Create spec > Okay, run the spec
