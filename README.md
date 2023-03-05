@@ -8,6 +8,8 @@ This repository is a monorepo used for testing the built-in `wait-on` function o
 - [Gatsby](#gatsby)
   - [Error condition](#error-condition-1)
   - [Workaround](#workaround-1)
+- [Next.js](#nextjs)
+  - [Start logs](#start-logs-1)
 - [Vite](#vite)
   - [Error condition](#error-condition-2)
   - [Workaround](#workaround-2)
@@ -162,6 +164,38 @@ Gatsby is not listening on the IPv4 loopback address `127.0.0.1`.
 Change `wait-on` to
 `wait-on: http://[::1]:8000`
 to listen on IPv6 loopback address `::1`.
+
+## Next.js
+
+See setup details in [docs/nextjs](docs/nextjs).
+
+### Start logs
+
+Next.js does not fail with `wait-on` running on GitHub ubuntu-22.04.
+
+It uses a well-behaved development server which listens on both `127.0.0.1` (IPv4) and on `::1` (IPv6), which is picked up by `wait-on` using `localhost`.
+
+```text
+start server command "npm run dev"
+current working directory "/home/runner/work/gh-action-wait-on/gh-action-wait-on/packages/nextjs"
+waiting on "http://localhost:3000" with timeout of 60 seconds
+/usr/local/bin/npm run dev
+
+> nextjs@0.1.0 dev
+> next dev
+
+ready - started server on 0.0.0.0:3000, url: http://localhost:3000
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+event - compiled client and server successfully in 2.3s (170 modules)
+wait  - compiling / (client and server)...
+event - compiled client and server successfully in 618 ms (201 modules)
+[2128:0305/142302.305883:ERROR:gpu_memory_buffer_support_x11.cc(44)] dri3 extension not supported.
+Missing baseUrl in compilerOptions. tsconfig-paths will be skipped
+```
 
 ## Vite
 
