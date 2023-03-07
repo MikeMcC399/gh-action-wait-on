@@ -44,10 +44,13 @@ npm start
 The following is shown:
 
 ```text
-** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+You can now view cra in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://192.168.202.1:3000
 ```
 
-In a separate terminal window (in `packages/angular`) execute:
+In a separate terminal window (in `packages/cra`) execute:
 
 ```bash
 npx cypress run
