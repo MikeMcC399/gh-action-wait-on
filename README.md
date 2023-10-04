@@ -12,17 +12,17 @@ The table below shows individual workarounds for the generic `wait-on` issue, te
 
 ## Summary
 
-| Package                               | Workaround                                          |
-| ------------------------------------- | --------------------------------------------------- |
-| [Angular](#angular)                   | [`wait-on: http://[::1]:4200`](#angular-workaround) |
-| [Create React App](#create-react-app) | none needed                                         |
-| [Gatsby](#gatsby)                     | [`wait-on: http://[::1]:8000`](#gatsby-workaround)  |
-| [Next.js](#nextjs)                    | none needed                                         |
-| [Vite](#vite)                         | [`start: npx vite --host`](#vite-workaround)        |
+| Package                               | Workaround                                             |
+| ------------------------------------- | ------------------------------------------------------ |
+| [Angular 15](#angular-15)             | [`wait-on: http://[::1]:4200`](#angular-15-workaround) |
+| [Create React App](#create-react-app) | none needed                                            |
+| [Gatsby](#gatsby)                     | [`wait-on: http://[::1]:8000`](#gatsby-workaround)     |
+| [Next.js](#nextjs)                    | none needed                                            |
+| [Vite](#vite)                         | [`start: npx vite --host`](#vite-workaround)           |
 
-## Angular
+## Angular 15
 
-See setup details in [docs/angular](docs/angular.md).
+See setup details in [docs/angular15](docs/angular15.md).
 
 ### Error condition
 
@@ -61,7 +61,7 @@ Error: connect ECONNREFUSED 127.0.0.1:4200
 
 Angular is not listening on the IPv4 loopback address `127.0.0.1`.
 
-### Angular Workaround
+### Angular 15 Workaround
 
 Change `wait-on` to
 `wait-on: http://[::1]:4200`

@@ -1,7 +1,7 @@
-name: Angular
+name: Angular 15
 on: workflow_dispatch
 jobs:
-  angular:
+  angular-15:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
@@ -9,7 +9,7 @@ jobs:
       - name: Cypress tests
         uses: cypress-io/github-action@v6
         with:
-          working-directory: packages/angular
+          working-directory: packages/angular15
           start: npm start
           wait-on: 'http://localhost:4200'
       - name: curl

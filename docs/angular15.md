@@ -1,4 +1,6 @@
-# Angular test
+# Angular 15 test
+
+These steps were correct when Angular 15 was the latest version.
 
 ## Setup
 
@@ -12,14 +14,14 @@ Execute:
 
 ```bash
 npm install -g @angular/cli
-ng new angular
+ng new angular15
 ```
 Accept defaults.
 
 ### Set up Cypress
 
 ```bash
-cd angular
+cd angular15
 npm install cypress@latest -D
 npx cypress open
 ```
@@ -49,7 +51,7 @@ The following is shown:
 ** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
 ```
 
-In a separate terminal window (in `packages/angular`) execute:
+In a separate terminal window (in `packages/angular15`) execute:
 
 ```bash
 npx cypress run
