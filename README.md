@@ -12,13 +12,13 @@ The table below shows individual workarounds for the generic `wait-on` issue, te
 
 ## Summary
 
-| Package                               | Workaround                                         |
-| ------------------------------------- | -------------------------------------------------- |
-| [Angular 15](#angular-15)             | none needed for `cypress-io/github-action@v6`      |
-| [Create React App](#create-react-app) | none needed                                        |
-| [Gatsby](#gatsby)                     | none needed for `cypress-io/github-action@v6`  |
-| [Next.js](#nextjs)                    | none needed                                        |
-| [Vite](#vite)                         | [`start: npx vite --host`](#vite-workaround)       |
+| Package                               | Workaround                                    |
+| ------------------------------------- | --------------------------------------------- |
+| [Angular 15](#angular-15)             | none needed for `cypress-io/github-action@v6` |
+| [Create React App](#create-react-app) | none needed                                   |
+| [Gatsby](#gatsby)                     | none needed for `cypress-io/github-action@v6` |
+| [Next.js](#nextjs)                    | none needed                                   |
+| [Vite](#vite)                         | none needed for `cypress-io/github-action@v6` |
 
 ## Angular 15
 
@@ -205,7 +205,7 @@ See setup details in [docs/vite](docs/vite.md)
 
 ### Error condition
 
-Running on GitHub ubuntu-22.04 the log file shows
+Running on GitHub ubuntu-22.04 with the now deprecated `cypress-io/github-action@v5` version, the log file showed:
 
 ```text
 start server command "npm start"
@@ -228,6 +228,12 @@ Error: connect ECONNREFUSED 127.0.0.1:5173
 Vite is not listening on the IPv4 loopback address `127.0.0.1`.
 
 ### Vite Workaround
+
+Updating to `cypress-io/github-action@v6` which runs on `node20`, instead of calling  `cypress-io/github-action@v5` which runs on `node16`, resolves the issue.
+
+#### Previous workaround
+
+The workaround for `cypress-io/github-action@v5` was:
 
 Replace `npm start` with `npx vite --host`
 
