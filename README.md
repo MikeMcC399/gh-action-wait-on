@@ -16,7 +16,7 @@ The table below shows individual workarounds for the generic `wait-on` issue, te
 | ------------------------------------- | -------------------------------------------------- |
 | [Angular 15](#angular-15)             | none needed for `cypress-io/github-action@v6`      |
 | [Create React App](#create-react-app) | none needed                                        |
-| [Gatsby](#gatsby)                     | [`wait-on: http://[::1]:8000`](#gatsby-workaround) |
+| [Gatsby](#gatsby)                     | none needed for `cypress-io/github-action@v6`  |
 | [Next.js](#nextjs)                    | none needed                                        |
 | [Vite](#vite)                         | [`start: npx vite --host`](#vite-workaround)       |
 
@@ -110,7 +110,7 @@ See setup details in [docs/gatsby](docs/gatsby.md).
 
 ### Error condition
 
-Running on GitHub ubuntu-22.04 the log file shows
+Running on GitHub ubuntu-22.04 with the now deprecated `cypress-io/github-action@v5` version, the log file showed:
 
 ```text
 start server command "npm start"
@@ -165,9 +165,7 @@ Gatsby is not listening on the IPv4 loopback address `127.0.0.1`.
 
 ### Gatsby Workaround
 
-Change `wait-on` to
-`wait-on: http://[::1]:8000`
-to listen on IPv6 loopback address `::1`.
+Updating to `cypress-io/github-action@v6` which runs on `node20`, instead of calling  `cypress-io/github-action@v5` which runs on `node16`, resolves the issue.
 
 ## Next.js
 
