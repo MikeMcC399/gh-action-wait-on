@@ -6,6 +6,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          # Supported versions under https://angular.io/guide/versions
+          node-version: 18
       - name: Cypress tests
         uses: cypress-io/github-action@v6
         with:
