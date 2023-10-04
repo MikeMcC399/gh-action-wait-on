@@ -12,13 +12,13 @@ The table below shows individual workarounds for the generic `wait-on` issue, te
 
 ## Summary
 
-| Package                               | Workaround                                             |
-| ------------------------------------- | ------------------------------------------------------ |
-| [Angular 15](#angular-15)             | [`wait-on: http://[::1]:4200`](#angular-15-workaround) |
-| [Create React App](#create-react-app) | none needed                                            |
-| [Gatsby](#gatsby)                     | [`wait-on: http://[::1]:8000`](#gatsby-workaround)     |
-| [Next.js](#nextjs)                    | none needed                                            |
-| [Vite](#vite)                         | [`start: npx vite --host`](#vite-workaround)           |
+| Package                               | Workaround                                         |
+| ------------------------------------- | -------------------------------------------------- |
+| [Angular 15](#angular-15)             | none needed for `cypress-io/github-action@v6`      |
+| [Create React App](#create-react-app) | none needed                                        |
+| [Gatsby](#gatsby)                     | [`wait-on: http://[::1]:8000`](#gatsby-workaround) |
+| [Next.js](#nextjs)                    | none needed                                        |
+| [Vite](#vite)                         | [`start: npx vite --host`](#vite-workaround)       |
 
 ## Angular 15
 
@@ -26,7 +26,7 @@ See setup details in [docs/angular15](docs/angular15.md).
 
 ### Error condition
 
-Running on GitHub ubuntu-22.04 the log file shows
+Running on GitHub ubuntu-22.04 with the now deprecated `cypress-io/github-action@v5` version, the log file showed:
 
 ```text
 start server command "npm start"
@@ -63,9 +63,7 @@ Angular is not listening on the IPv4 loopback address `127.0.0.1`.
 
 ### Angular 15 Workaround
 
-Change `wait-on` to
-`wait-on: http://[::1]:4200`
-to listen on IPv6 loopback address `::1`.
+Updating to `cypress-io/github-action@v6` which runs on `node20`, instead of calling  `cypress-io/github-action@v5` which runs on `node16`, resolves the issue.
 
 ## Create React App
 
